@@ -1,6 +1,6 @@
 # Maintainer : bartus <arch-user-repoᘓbartus.33mail.com>
 pkgname=meshlab-git
-pkgver=2019.01.29.f6c6675.r0.gf6c6675b
+pkgver=2019.01.29.f6c6675.r2.g17d380b1
 pkgrel=1
 pkgdesc="System for processing and editing of unstructured 3D models arising in 3D scanning (qt5 version)"
 arch=('i686' 'x86_64')
@@ -13,7 +13,6 @@ makedepends=('git' 'muparser' 'levmar' 'lib3ds' 'mpir')
 optdepends=('u3d: for U3D and IDTF file support'
             'lib3ds: for Autodesk`s 3D-Studio r3 and r4 .3DS file support'
             'levmar: for isoparametrization and mutualcorrs plugins'
-            'muparser: for filer_func plugins'
             'mpir: for Constructive Solid Geometry operation filters')
 #also create openctm(aur) jhead-lib structuresynth-lib to handle last dep
 install="${pkgname}.install"
@@ -24,7 +23,6 @@ source=("git+https://github.com/cnr-isti-vclab/meshlab.git"
         "external.patch"
         "3ds.patch"
         "levmar.patch"
-        "muparser.patch"
         "meshlabserver_GLU.patch"
         "mpir.patch"
         "rpath.patch"
@@ -35,10 +33,9 @@ md5sums=('SKIP'
          'SKIP'
          'c1167629f7cebe025ba2cf29846462fd'
          'ad6d2259bd491859834bd42cec92f245'
-         '0ac7701c703d3d88a9295f8fb39beeb9'
+         'fa40c5f8b271bde19b9faeadfc811b60'
          '473a1af178e0ea2e92441e5dc29a3842'
          '32581c7128c8e544705c39e59647ab10'
-         'f1efa4f1400cc0952fdcd44adc11174b'
          'a4f7548978564637e502ecdbd2b537e0'
          '726e5aeee66681b586150c08cafbe3f1'
          'eb89ce7e86bba52ca4ad4aa173d3f8a2'
@@ -66,8 +63,6 @@ prepare() {
   patch -Np1 -i ../meshlabserver_GLU.patch
   msg "using system mpir lib"
   patch -Np1 -i ../mpir.patch
-  msg "using system muparser lib"
-  patch -Np1 -i ../muparser.patch
   msg "using system levmar lib"
   patch -Np1 -i ../levmar.patch
   msg "using system 3ds lib"
